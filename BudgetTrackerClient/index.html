@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html ng-app="BudgetTrackerApp">
+<head>
+    <title>Budget Tracker</title>
+    <meta charset="utf-8" />
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="css/bootswatch.css" rel="stylesheet" />
+    <link type="image/x-icon" rel="icon" href="img/linecons_e020(0)_64.png" />
+</head>
+<body class="style" ng-controller="BudgetTrackerController">
+    <div class="container JT">
+        <div class="jumbotron">
+            <h1>Budget Tracker</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-lg-6">
+            <div class="panel panel-success text-center">
+                <div class="panel-heading">Income Entries</div>
+                <div class="panel-body">
+
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon" id="sizing-addon2"><i class="glyphicon glyphicon-pencil"></i></span>
+                        <input type="text" class="form-control" placeholder="Description" aria-describedby="sizing-addon2" ng-model="income.description">
+                    </div>
+
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon" id="sizing-addon2"><i class="glyphicon glyphicon-usd"></i></span>
+                        <input type="text" class="form-control" placeholder="Amount" aria-describedby="sizing-addon2" ng-model="income.amount">
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-md btn-block" ng-click="addIncome()">Add Income</button>
+
+                    <table class="table entries">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Description</th>
+                                <th class="text-center">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="income in incomes">
+                                <td>{{income.description}}</td>
+                                <td>{{income.amount | currency}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="panel panel-success text-center">
+                <div class="panel-heading">Expense Entries</div>
+                <div class="panel-body">
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon" id="sizing-addon2"><i class="glyphicon glyphicon-pencil"></i></span>
+                        <input type="text" class="form-control" placeholder="Description" aria-describedby="sizing-addon2" ng-model="expense.description">
+                    </div>
+
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon" id="sizing-addon2"><i class="glyphicon glyphicon-usd"></i></span>
+                        <input type="text" class="form-control" placeholder="Amount" aria-describedby="sizing-addon2" ng-model="expense.amount">
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-md btn-block" ng-click="addExpense()">Add Expense</button>
+
+                    <table class="table entries">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Description</th>
+                                <th class="text-center">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="expense in expenses">
+                                <td>{{expense.description}}</td>
+                                <td>{{expense.amount | currency}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-offset-3">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">Summary</div>
+                <div class="panel-body">
+                    <div class="col-lg-6">
+                        <h4>Total Income</h4>
+                        <p>{{totalIncome() | currency}}</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4>Total Expense</h4>
+                        <p>{{totalExpense() | currency}}</p>
+                    </div>
+                    <div>
+                        <h4>Left after spending</h4>
+                        <p>{{leftAfterSpending() | currency}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/BudgertTracker.ctrl.js"></script>
+</body>
+</html>

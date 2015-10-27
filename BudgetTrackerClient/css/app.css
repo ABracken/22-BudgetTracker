@@ -1,0 +1,26 @@
+﻿body.style {
+    background-color: #F0F0F0;
+}
+.container.JT {
+    margin-top: 45px;
+}
+.jumbotron{
+  position: relative;
+  z-index: 5;
+  font-size: 40px;
+  text-align: center;
+}
+.jumbotron::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url('../img/jumbotron.jpg');
+    opacity: .4;
+}
+.input-group {
+    padding-bottom: 20px;
+}
